@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/informacoesconfirmadas.shop/index.html"
+    }
+  ]
+}
